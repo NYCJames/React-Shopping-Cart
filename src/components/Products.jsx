@@ -1,15 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 
 function Products({ item }) {
   // console.log(item);
-
   const { id, productName, price, productImage } = item;
-  const { shoppingCart, addToCart } = useContext(ShopContext);
+  const { addToCart, shoppingCart } = useContext(ShopContext);
   // console.log(shoppingCart);
+  // let cartAmount;
+  const [cartAmount, setCartAmount] = useState(shoppingCart.get(id));
 
+  function handleAddToCart(event) {
+    // console.log(event.target.parentElement.id);
+    const id = Number(event.target.parentElement.id);
+
+    addToCart(id);
+    setCartAmount(shoppingCart.get(id));
+
+    // change button go to cart?
+    console.log(shoppingCart.get(id));
+  }
+
+  // cartAmount = shoppingCart.get(id);
   return (
-    <div className="product">
+    <div className="product" id={id}>
       <img src={productImage} alt="" className="" />
       <div className="description">
         <p>
@@ -19,7 +32,9 @@ function Products({ item }) {
         <p>${price}</p>
       </div>
 
-      <button className="addToCartBtn">Add to Cart</button>
+      <button type="button" className="addToCartBtn" onClick={handleAddToCart}>
+        {cartAmount > 0 ? `${cartAmount} in Cart` : `Add to Cart`}
+      </button>
     </div>
   );
 }

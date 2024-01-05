@@ -3,12 +3,27 @@ import React, { createContext, useState } from "react";
 export const ShopContext = createContext(undefined);
 
 function ShopContextProvider(props) {
-  const [shoppingCart, setShoppingCart] = useState({});
+  // retrieve cart from local storage
 
-  function addToCart() {
-    console.log(`add to cart`);
+  const [shoppingCart, setShoppingCart] = useState(new Map());
 
-    setShoppingCart([`test`]);
+  function addToCart(id) {
+    // console.log(shoppingCart);
+    // console.log(`${id} added to cart`);
+
+    // const newItem = {};
+    // newItem[id] = qty;
+    // console.log(newItem);
+
+    // setShoppingCart([...shoppingCart, newItem]);
+
+    const newMap = shoppingCart;
+    if (!shoppingCart.get(id)) {
+      shoppingCart.set(id, 1);
+    } else {
+      shoppingCart.set(id, shoppingCart.get(id) + 1);
+    }
+    setShoppingCart(newMap);
   }
 
   return (
