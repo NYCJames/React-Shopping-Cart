@@ -11,6 +11,7 @@ import {
 import NavBar from "./components/NavBar.jsx";
 import Shop from "./pages/Shop.jsx";
 import ShoppingCart from "./pages/ShoppingCart.jsx";
+import ShopContextProvider from "./context/ShopContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <ShopContextProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </ShopContextProvider>
   </React.StrictMode>
 );
