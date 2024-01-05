@@ -1,6 +1,7 @@
 import React from "react";
 import { TbShoppingCart } from "react-icons/tb";
 import { Link, Outlet } from "react-router-dom";
+import "./NavBar.css";
 
 function NavBar() {
   return (

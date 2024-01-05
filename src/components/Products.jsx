@@ -7,7 +7,7 @@ function Products({ item }) {
 
   return (
     <div className="product">
-      <img src={productImage} alt="" width="256" className="description" />
+      <img src={productImage} alt="" className="" />
       <div className="description">
         <p>
           <b>{productName}</b>
@@ -15,6 +15,8 @@ function Products({ item }) {
 
         <p>${price}</p>
       </div>
+
+      <button className="addToCartBtn">Add to Cart</button>
     </div>
   );
 }
