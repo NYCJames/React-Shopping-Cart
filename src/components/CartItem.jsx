@@ -15,7 +15,11 @@ function CartItem({ value }) {
 
         <p>${price}</p>
 
-        <p>{qty}</p>
+        <div className="count-handler">
+          <button>-</button>
+          <p>{qty}</p>
+          <button>+</button>
+        </div>
       </div>
     </div>
   );
