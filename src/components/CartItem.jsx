@@ -3,6 +3,8 @@ import React from "react";
 function CartItem({ value }) {
   const { id, productName, price, productImage, qty } = value;
 
+  function handleCartChange(event) {}
+
   return (
     <div className="cart-item">
       <img src={productImage} width="512" />
@@ -17,7 +19,7 @@ function CartItem({ value }) {
 
         <div className="count-handler">
           <button>-</button>
-          <p>{qty}</p>
+          <input value={qty} onChange={handleCartChange}></input>
           <button>+</button>
         </div>
       </div>

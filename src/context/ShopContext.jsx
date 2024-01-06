@@ -7,7 +7,7 @@ function ShopContextProvider(props) {
 
   const [shoppingCart, setShoppingCart] = useState(new Map());
 
-  function addToCart(id) {
+  function addToCart(id, qty = 1) {
     // console.log(shoppingCart);
     // console.log(`${id} added to cart`);
 
@@ -18,11 +18,12 @@ function ShopContextProvider(props) {
     // setShoppingCart([...shoppingCart, newItem]);
 
     const newMap = shoppingCart;
-    if (!shoppingCart.get(id)) {
-      shoppingCart.set(id, 1);
-    } else {
-      shoppingCart.set(id, shoppingCart.get(id) + 1);
-    }
+    // if (!shoppingCart.get(id)) {
+    //   shoppingCart.set(id, 1);
+    // } else {
+    //   shoppingCart.set(id, shoppingCart.get(id) + 1);
+    // }
+    shoppingCart.set(id, qty);
     setShoppingCart(newMap);
   }
 
