@@ -5,11 +5,12 @@ function CartItem({ value }) {
 
   return (
     <div className="cart-item">
-      <p>{id}</p>
       <img src={productImage} width="512" />
       <div className="description">
         <p>
-          <b>{productName}</b>
+          <b>
+            {id} - {productName}
+          </b>
         </p>
 
         <p>${price}</p>
