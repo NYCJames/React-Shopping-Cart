@@ -5,7 +5,17 @@ export const ShopContext = createContext(undefined);
 function ShopContextProvider(props) {
   // retrieve cart from local storage
 
-  const [shoppingCart, setShoppingCart] = useState(new Map());
+  const [shoppingCart, setShoppingCart] = useState(
+    retrieveFromLocal() || new Map()
+  );
+
+  function retrieveFromLocal() {
+    return new Map(JSON.parse(localStorage.getItem(`shoppingCart`)));
+  }
+
+  //   function pushToLocal(data) {
+  //     localStorage.setItem(`shoppingCart`, JSON.stringify(data));
+  //   }
 
   function addToCart(id, qty = 1) {
     // console.log(shoppingCart);
@@ -30,8 +40,13 @@ function ShopContextProvider(props) {
     }
     setShoppingCart(newMap);
 
-    console.log(shoppingCart);
+    // console.log(shoppingCart);
 
+    // pushToLocal(newMap);
+    // console.log(JSON.stringify([...newMap]));
+    localStorage.setItem(`shoppingCart`, JSON.stringify([...newMap]));
+    // console.log(JSON.parse(localStorage.getItem(`cart`)));
+    console.log(new Map(JSON.parse(localStorage.getItem(`shoppingCart`))));
     return newMap;
   }
 
