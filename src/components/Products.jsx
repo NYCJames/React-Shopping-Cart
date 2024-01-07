@@ -30,7 +30,11 @@ function Products({ item }) {
   }
 
   function handleSubtractCart(event) {
-    console.log(event.target);
+    console.log(event.target.nextElementSibling.value);
+    const newQty = Number(event.target.nextElementSibling.value) - 1;
+
+    addToCart(id, newQty);
+    setCartAmount(shoppingCart.get(id));
   }
 
   // cartAmount = shoppingCart.get(id);
