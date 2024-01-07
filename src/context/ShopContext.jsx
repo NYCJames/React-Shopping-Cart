@@ -29,6 +29,8 @@ function ShopContextProvider(props) {
       shoppingCart.set(id, qty);
     }
     setShoppingCart(newMap);
+
+    console.log(shoppingCart);
   }
 
   return (

@@ -46,7 +46,7 @@ function Products({ item }) {
     setCartAmount(shoppingCart.get(id));
   }
 
-  function handleRemoveFromCart(event) {
+  function handleRemoveFromCart() {
     // console.log(event.currentTarget.parentElement.children[1].value);
     // const newQty = 0
 
