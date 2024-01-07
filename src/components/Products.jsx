@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
+import { TbTrash } from "react-icons/tb";
 
 function Products({ item }) {
   const { id, productName, price, productImage } = item;
@@ -37,6 +38,22 @@ function Products({ item }) {
     setCartAmount(shoppingCart.get(id));
   }
 
+  function handleAddCart(event) {
+    // console.log(event.target.parentElement.children[1].value);
+    const newQty = Number(event.target.parentElement.children[1].value) + 1;
+
+    addToCart(id, newQty);
+    setCartAmount(shoppingCart.get(id));
+  }
+
+  function handleRemoveFromCart(event) {
+    // console.log(event.currentTarget.parentElement.children[1].value);
+    // const newQty = 0
+
+    addToCart(id, 0);
+    setCartAmount(shoppingCart.get(id));
+  }
+
   // cartAmount = shoppingCart.get(id);
   return (
     <div className="product" id={id}>
@@ -57,7 +74,10 @@ function Products({ item }) {
         <div className="count-handler">
           <button onClick={handleSubtractCart}>-</button>
           <input value={cartAmount} onChange={handleCartChange}></input>
-          <button>+</button> in Cart
+          <button onClick={handleAddCart}>+</button> in Cart
+          <button onClick={handleRemoveFromCart}>
+            <TbTrash />
+          </button>
         </div>
       ) : (
         <button
@@ -68,6 +88,8 @@ function Products({ item }) {
           Add to Cart
         </button>
       )}
+
+      {cartAmount > 0 ? `` : ``}
     </div>
   );
 }

@@ -23,7 +23,11 @@ function ShopContextProvider(props) {
     // } else {
     //   shoppingCart.set(id, shoppingCart.get(id) + 1);
     // }
-    shoppingCart.set(id, qty);
+    if (qty === 0) {
+      shoppingCart.delete(id);
+    } else {
+      shoppingCart.set(id, qty);
+    }
     setShoppingCart(newMap);
   }
 
