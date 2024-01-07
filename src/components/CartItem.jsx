@@ -13,32 +13,32 @@ function CartItem({ value }) {
     const newQty = Number(event.target.value);
     // console.log(id, newQty);
 
-    addToCart(id, newQty);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, newQty);
+    setCartAmount(newMap.get(id));
   }
 
   function handleSubtractCart(event) {
     console.log(event.target.nextElementSibling.value);
     const newQty = Number(event.target.nextElementSibling.value) - 1;
 
-    addToCart(id, newQty);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, newQty);
+    setCartAmount(newMap.get(id));
   }
 
   function handleAddCart(event) {
     // console.log(event.target.parentElement.children[1].value);
     const newQty = Number(event.target.parentElement.children[1].value) + 1;
 
-    addToCart(id, newQty);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, newQty);
+    setCartAmount(newMap.get(id));
   }
 
   function handleRemoveFromCart() {
     // console.log(event.currentTarget.parentElement.children[1].value);
     // const newQty = 0
 
-    addToCart(id, 0);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, 0);
+    setCartAmount(newMap.get(id));
   }
 
   return (
@@ -55,7 +55,7 @@ function CartItem({ value }) {
 
         <div className="count-handler">
           <button onClick={handleSubtractCart}>-</button>
-          <input value={cartAmount} onChange={handleCartChange}></input>
+          <input value={cartAmount || 0} onChange={handleCartChange}></input>
           <button onClick={handleAddCart}>+</button>
           <button onClick={handleRemoveFromCart}>
             <TbTrash />

@@ -9,12 +9,12 @@ function Products({ item }) {
   // const cartAmount = shoppingCart.get(id);
   const [cartAmount, setCartAmount] = useState(shoppingCart.get(id));
 
-  function handleAddToCart(event) {
+  function handleAddToCart() {
     // console.log(event.target.parentElement.id);
-    const id = Number(event.target.parentElement.id);
+    // const id = Number(event.target.parentElement.id);
 
-    addToCart(id);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id);
+    setCartAmount(newMap.get(id));
 
     // change button go to cart?
     // console.log(shoppingCart.get(id));
@@ -26,32 +26,32 @@ function Products({ item }) {
     const newQty = Number(event.target.value);
     // console.log(id, newQty);
 
-    addToCart(id, newQty);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, newQty);
+    setCartAmount(newMap.get(id));
   }
 
   function handleSubtractCart(event) {
     console.log(event.target.nextElementSibling.value);
     const newQty = Number(event.target.nextElementSibling.value) - 1;
 
-    addToCart(id, newQty);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, newQty);
+    setCartAmount(newMap.get(id));
   }
 
   function handleAddCart(event) {
     // console.log(event.target.parentElement.children[1].value);
     const newQty = Number(event.target.parentElement.children[1].value) + 1;
 
-    addToCart(id, newQty);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, newQty);
+    setCartAmount(newMap.get(id));
   }
 
   function handleRemoveFromCart() {
     // console.log(event.currentTarget.parentElement.children[1].value);
     // const newQty = 0
 
-    addToCart(id, 0);
-    setCartAmount(shoppingCart.get(id));
+    const newMap = addToCart(id, 0);
+    setCartAmount(newMap.get(id));
   }
 
   // cartAmount = shoppingCart.get(id);

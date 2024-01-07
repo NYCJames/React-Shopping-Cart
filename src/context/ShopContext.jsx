@@ -17,20 +17,22 @@ function ShopContextProvider(props) {
 
     // setShoppingCart([...shoppingCart, newItem]);
 
-    const newMap = shoppingCart;
+    const newMap = new Map(shoppingCart);
     // if (!shoppingCart.get(id)) {
     //   shoppingCart.set(id, 1);
     // } else {
     //   shoppingCart.set(id, shoppingCart.get(id) + 1);
     // }
     if (qty === 0) {
-      shoppingCart.delete(id);
+      newMap.delete(id);
     } else {
-      shoppingCart.set(id, qty);
+      newMap.set(id, qty);
     }
     setShoppingCart(newMap);
 
     console.log(shoppingCart);
+
+    return newMap;
   }
 
   return (
