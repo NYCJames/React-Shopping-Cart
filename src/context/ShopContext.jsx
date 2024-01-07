@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+// import { PRODUCTS } from "../Products";
 
 export const ShopContext = createContext(undefined);
 
@@ -49,6 +50,19 @@ function ShopContextProvider(props) {
     console.log(new Map(JSON.parse(localStorage.getItem(`shoppingCart`))));
     return newMap;
   }
+
+  // function getTotalPrice() {
+  //   let totalPrice = 0;
+
+  //   for (item in shoppingCart) {
+  //     console.log(item);
+  //     // let itemPrice = PRODUCTS.find(function (value) {
+  //     // value.id === shoppingCart;
+  //     // });
+  //   }
+
+  //   return totalPrice;
+  // }
 
   return (
     <ShopContext.Provider value={{ addToCart, shoppingCart }}>
